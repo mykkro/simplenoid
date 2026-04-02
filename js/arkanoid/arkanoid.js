@@ -1,0 +1,287 @@
+
+var Arkanoid = {
+    width: 20,
+    height: 20,
+    bricks: {
+        "basic": {
+            width: 2,
+            height: 1,
+            points: 10, // receive on hit,
+            lives: 1,
+            color: "cyan"
+        },
+            "double": {
+            width: 2,
+            height: 1,
+            points: 10,
+            lives: 1,
+            color: "blue",
+            morphsTo: "basic" // if destroyed, changes to...
+        },
+            "solid": {
+            width: 2,
+            height: 1,
+            points: 10,
+            lives: 2, // hit it twice to destroy it...
+            color: "red"
+        },
+            "unbreakable": {
+            width: 2,
+            height: 1,
+            points: 10,
+            lives: 1,
+            color: "yellow",
+            unbreakable: true
+        }
+    },
+    /* screen has coordinate origin in top left corner */
+    screens: [
+	{
+        "name": "Super Simple",
+            "author": "Myrousz",
+            "bricks": [{
+            x: 3,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 5,
+            y: 3,
+            type: "solid"
+        }, {
+            x: 7,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 9,
+            y: 3,
+            type: "solid"
+        }, {
+            x: 11,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 13,
+            y: 3,
+            type: "solid"
+        }, {
+            x: 15,
+            y: 3,
+            type: "basic"
+        }]
+    },
+	{
+        "name": "Demo Level",
+            "author": "Myrousz",
+            "bricks": [{
+            x: 1,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 3,
+            y: 1,
+            type: "double"
+        }, {
+            x: 5,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 7,
+            y: 1,
+            type: "double"
+        }, {
+            x: 9,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 11,
+            y: 1,
+            type: "double"
+        }, {
+            x: 13,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 15,
+            y: 1,
+            type: "double"
+        }, {
+            x: 17,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 2,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 4,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 6,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 8,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 10,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 12,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 14,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 16,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 3,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 5,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 7,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 9,
+            y: 3,
+            type: "solid"
+        }, {
+            x: 11,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 13,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 15,
+            y: 3,
+            type: "basic"
+        }]
+    },
+	{
+        "name": "Demo Level 2",
+            "author": "Myrousz",
+            "bricks": [{
+            x: 1,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 3,
+            y: 1,
+            type: "double"
+        }, {
+            x: 5,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 7,
+            y: 1,
+            type: "double"
+        }, {
+            x: 9,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 11,
+            y: 1,
+            type: "double"
+        }, {
+            x: 13,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 15,
+            y: 1,
+            type: "double"
+        }, {
+            x: 17,
+            y: 1,
+            type: "basic"
+        }, {
+            x: 2,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 4,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 6,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 8,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 10,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 12,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 14,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 16,
+            y: 2,
+            type: "basic"
+        }, {
+            x: 3,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 5,
+            y: 3,
+            type: "unbreakable"
+        }, {
+            x: 7,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 9,
+            y: 3,
+            type: "solid"
+        }, {
+            x: 11,
+            y: 3,
+            type: "basic"
+        }, {
+            x: 13,
+            y: 3,
+            type: "unbreakable"
+        }, {
+            x: 15,
+            y: 3,
+            type: "basic"
+        }]
+    }
+	]
+};
+
+Arkanoid.Komponent = Base.extend({
+	constructor: function(paper) {
+		this.paper = paper;
+    },
+	remove: function() {
+		if(this.element) {
+			this.element.remove();
+			this.element = null;
+		}
+	}
+});
